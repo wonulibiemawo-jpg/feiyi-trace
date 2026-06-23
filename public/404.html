@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>页面跳转中…</title>
+  <script>
+    // GitHub Pages SPA 路由回退方案
+    // 当用户直接访问 /feiyi-trace/detail/1 等子页面时，
+    // GitHub Pages 会返回 404，此时本页将路径暂存并跳回首页，
+    // 再由 index.html 中的恢复脚本还原正确路径
+    (function() {
+      var redirectPath = location.pathname + location.search + location.hash;
+      sessionStorage.setItem('gh-pages-redirect', redirectPath);
+      // 跳转到 GitHub Pages 的根路径
+      location.replace(new URL('/feiyi-trace/', location.origin).href);
+    })();
+  </script>
+</head>
+<body>页面跳转中，请稍候…</body>
+</html>

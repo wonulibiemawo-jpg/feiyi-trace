@@ -1,0 +1,65 @@
+# GitHub Actions：自动构建并部署到 GitHub Pages
+# 每次推送到 main 分支时自动执行
+# 也可在 GitHub 仓库的 Actions 页面手动触发
+
+name: 部署到 GitHub Pages
+
+on:
+  push:
+    branches: [main]           # 推送到 main 时自动部署
+  workflow_dispatch:            # 支持手动触发
+
+# 设置 GITHUB_TOKEN 的权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 确保同时只运行一个部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # ① 拉取代码
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      # ② 安装 Node.js
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # ③ 安装依赖
+      - name: 安装依赖
+        run: npm ci
+
+      # ④ 构建生产包（VITE_API_KEY 等环境变量需在 GitHub Secrets 中配置）
+      - name: 构建
+        run: npm run build
+        env:
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+      # ⑤ 配置 GitHub Pages
+      - name: 配置 Pages
+        uses: actions/configure-pages@v4
+
+      # ⑥ 上传构建产物
+      - name: 上传产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      # ⑦ 部署到 GitHub Pages
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v4

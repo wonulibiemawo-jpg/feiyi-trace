@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl *)",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(python3 -c ' *)",
+      "Bash(mv \"京剧.jpg\" \"peking-opera.jpg\")",
+      "Bash(mv \"景德镇瓷器.jpg\" \"jingdezhen-porcelain.jpg\")",
+      "Bash(mv \"剪纸.jpg\" \"paper-cutting.jpg\")",
+      "Bash(mv \"昆曲.jpg\" \"kunqu-opera.jpg\")",
+      "Bash(mv \"蜀绣.jpg\" \"shu-embroidery.jpg\")",
+      "Bash(git *)",
+      "WebFetch(domain:wonulibiemawo.github.io)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh *)"
+    ]
+  }
+}

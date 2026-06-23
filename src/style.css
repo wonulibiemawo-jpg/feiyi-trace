@@ -1,0 +1,149 @@
+/* ========================================
+   非遗·寻迹 — 全局样式
+   使用 CSS 变量统一管理颜色和排版
+   ======================================== */
+
+/* --- CSS 变量（设计系统的核心） --- */
+:root {
+  /* 主色调：温暖的中国风配色 */
+  --color-primary: #8B4513;        /* 棕色 — 主色调，类似木纹 */
+  --color-primary-dark: #6B3410;   /* 深棕 — hover/强调 */
+  --color-primary-light: #D2B48C;  /* 浅棕 — 柔和背景 */
+  --color-accent: #C41E3A;         /* 朱红色 — 点睛色，中国红 */
+  --color-accent-light: #FFE4E1;   /* 浅红 — 柔和强调 */
+
+  /* 中性色 */
+  --color-bg: #F8F5F0;             /* 暖米色背景 */
+  --color-bg-white: #FFFFFF;       /* 卡片/内容区白色 */
+  --color-text: #333333;           /* 正文颜色 */
+  --color-text-light: #666666;     /* 次要文字 */
+  --color-text-muted: #999999;     /* 更淡的文字 */
+  --color-border: #E5E0D8;         /* 边框颜色 */
+
+  /* 字号 */
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 24px;
+  --font-2xl: 32px;
+  --font-3xl: 40px;
+
+  /* 间距 */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* 字体 */
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-serif: 'Noto Serif SC', 'STSong', 'SimSun', 'Songti SC', serif;
+}
+
+/* --- 暗色模式 --- */
+[data-theme="dark"] {
+  --color-primary: #c9986b;
+  --color-primary-dark: #e0b88a;
+  --color-primary-light: #5a3a28;
+  --color-accent: #e8404a;
+  --color-accent-light: #3d1a1e;
+
+  --color-bg: #1a1410;
+  --color-bg-white: #241e18;
+  --color-text: #e0d8cf;
+  --color-text-light: #b0a597;
+  --color-text-muted: #7a7065;
+  --color-border: #3d342a;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* --- 全局重置 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 链接样式 */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* 标题字体使用衬线体，更有文化韵味 */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+h1 { font-size: var(--font-3xl); }
+h2 { font-size: var(--font-2xl); }
+h3 { font-size: var(--font-xl); }
+
+/* 图片默认响应式 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 按钮基础样式 */
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;  /* 波纹不能溢出按钮 */
+}
+
+/* 按钮点击波纹效果 */
+button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10%);
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.6s, background-size 0.6s;
+  background-size: 0% 0%;
+  pointer-events: none;
+}
+
+button:active::after {
+  background-size: 300% 300%;
+  opacity: 1;
+  transition: opacity 0s, background-size 0.4s;
+}
