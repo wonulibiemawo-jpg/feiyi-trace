@@ -20,7 +20,6 @@ function reset() {
 <template>
   <section class="shell page">
     <header class="page-heading">
-      <p class="eyebrow">01 / PATTERN INDEX</p>
       <h1>盘扣图鉴</h1>
       <p>按扣形查找资料，了解每款样式的特点、用途与对应练习。</p>
     </header>

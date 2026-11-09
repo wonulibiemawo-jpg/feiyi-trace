@@ -85,7 +85,7 @@ async function save() {
 <template>
   <section class="shell page narrow">
     <RouterLink class="back" :to="{ name: 'community' }">← 作品交流</RouterLink>
-    <header class="page-heading"><p class="eyebrow">04 / COMMUNITY</p><h1>{{ route.params.id ? '编辑帖子' : '发布帖子' }}</h1><p>提交或修改后，帖子进入审核队列。</p></header>
+    <header class="page-heading"><h1>{{ route.params.id ? '编辑帖子' : '发布帖子' }}</h1><p>帖子审核通过后会出现在交流列表。</p></header>
     <div v-if="!viewer" class="empty"><h2>登录体验账户后发帖</h2><RouterLink class="btn" :to="{ name: 'account', query: { next: route.fullPath } }">前往个人中心</RouterLink></div>
     <div v-else-if="route.params.id && !existing" class="empty"><h2>找不到可编辑的帖子</h2><RouterLink class="text-link" :to="{ name: 'account' }">查看个人中心 ↗</RouterLink></div>
     <form v-else class="panel form-stack" @submit.prevent="save">

@@ -56,7 +56,6 @@ async function submit() {
   <section class="shell page narrow">
     <RouterLink v-if="isResult" class="back" :to="{ name: 'quiz' }">← 知识答题</RouterLink>
     <header class="page-heading">
-      <p class="eyebrow">03 / KNOWLEDGE CHECK</p>
       <h1>{{ isResult ? '答题结果与错题回顾' : course?.name || (route.query.retry ? '错题重答' : '知识答题') }}</h1>
       <p>{{ isResult ? '查看得分、错题解析和对应学习资料。' : '用几道题检查对盘扣样式、材料与操作顺序的理解。' }}</p>
     </header>

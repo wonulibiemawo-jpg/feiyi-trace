@@ -30,7 +30,7 @@ function cancel() {
 <template>
   <section class="shell page narrow">
     <RouterLink v-if="route.params.id" class="back" :to="{ name: 'events' }">← 体验活动</RouterLink>
-    <header class="page-heading"><p class="eyebrow">05 / WORKSHOPS</p><h1>{{ event?.title || '体验活动' }}</h1><p>{{ event?.description || '查看活动形式、时间和报名信息。' }}</p></header>
+    <header class="page-heading"><h1>{{ event?.title || '体验活动' }}</h1><p>{{ event?.description || '查看活动时间和报名信息。' }}</p></header>
     <p class="demo-note">测试数据 · 此处活动仅用于演示报名流程。</p>
     <article v-if="event" class="panel">
       <div class="toolbar"><span class="tag">{{ event.mode }}</span><span class="tag status">{{ eventStatus(event) }}</span></div>

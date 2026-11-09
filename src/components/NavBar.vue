@@ -10,12 +10,12 @@ const links = [
     <div class="shell header-inner">
       <RouterLink :to="{ name: 'home' }" class="brand" aria-label="上海盘扣文化 首页">
         <span class="brand-mark" aria-hidden="true">扣</span>
-        <span>上海盘扣文化<small>SHANGHAI PANKOU</small></span>
+        <span>上海盘扣文化</span>
       </RouterLink>
       <nav class="site-nav" aria-label="主导航">
         <RouterLink v-for="[name, label] in links" :key="name" :to="{ name }">{{ label }}</RouterLink>
       </nav>
-      <RouterLink :to="{ name: 'account' }" class="account-link">个人中心 <span aria-hidden="true">↗</span></RouterLink>
+      <RouterLink :to="{ name: 'account' }" class="account-link">个人中心</RouterLink>
     </div>
   </header>
 </template>

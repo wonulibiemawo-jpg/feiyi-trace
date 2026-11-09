@@ -82,7 +82,7 @@ function cancelEvent(event) {
 
 <template>
   <section class="shell page narrow">
-    <header class="page-heading"><p class="eyebrow">ADMIN / LOCAL PREVIEW</p><h1>管理演示</h1><p>查看待审帖子、管理测试活动和浏览现有资料。</p></header>
+    <header class="page-heading"><h1>管理演示</h1><p>查看待审帖子、管理测试活动和浏览现有资料。</p></header>
     <p class="demo-note">前端演示 · 管理身份、审核结果和报名名单仅用于本机流程展示。</p>
     <div v-if="!adminMode" class="empty"><h2>进入管理预览</h2><button class="btn" @click="adminMode = true">进入管理员演示</button></div>
     <template v-else>

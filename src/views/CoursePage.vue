@@ -21,7 +21,6 @@ watch([course, () => viewer.value?.id], () => {
   <section class="shell page">
     <RouterLink v-if="route.params.id" class="back" :to="{ name: 'courses' }">← 制作学习</RouterLink>
     <header class="page-heading">
-      <p class="eyebrow">02 / MAKING GUIDE</p>
       <h1>{{ course?.name || '制作学习' }}</h1>
       <p>{{ course?.intro || '按步骤了解材料、操作顺序和注意事项。' }}</p>
     </header>
@@ -63,7 +62,7 @@ watch([course, () => viewer.value?.id], () => {
     <div v-else class="grid three">
       <RouterLink v-for="(item, index) in courses" :key="item.id" class="work-card" :to="{ name: 'courses', params: { id: item.id } }">
         <div class="art-panel" :class="'palette-' + index"><KnotArt :design="item.art" /></div>
-        <div class="card-copy"><span class="tag">{{ item.steps.length }} 个步骤</span><h3>{{ item.name }} <span aria-hidden="true">↗</span></h3><p>{{ item.intro }}</p><p v-if="viewer">已查看 {{ stepsFor(viewer.id, item.id).length }} 步</p></div>
+        <div class="card-copy"><span class="tag">{{ item.steps.length }} 个步骤</span><h3>{{ item.name }}</h3><p>{{ item.intro }}</p><p v-if="viewer">已查看 {{ stepsFor(viewer.id, item.id).length }} 步</p></div>
       </RouterLink>
     </div>
   </section>

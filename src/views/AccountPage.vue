@@ -33,7 +33,7 @@ function deletePost(post) {
 
 <template>
   <section class="shell page narrow">
-    <header class="page-heading"><p class="eyebrow">06 / MY ARCHIVE</p><h1>个人中心</h1><p>查看收藏、学习进度、答题结果、活动报名和作品帖子。</p></header>
+    <header class="page-heading"><h1>个人中心</h1><p>查看你的收藏、学习记录、报名和帖子。</p></header>
     <p class="demo-note">前端演示 · 体验昵称、记录和图片保存在当前浏览器。请勿填写个人敏感信息。</p>
     <form v-if="!viewer" class="panel account-form" @submit.prevent="login(nickname)">
       <h2>进入体验账户</h2><p>使用新昵称创建本机档案，使用已有昵称继续体验。</p>

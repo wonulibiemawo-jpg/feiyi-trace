@@ -34,7 +34,7 @@ function comment() {
   <section class="shell page narrow">
     <RouterLink v-if="route.params.id" class="back" :to="{ name: 'community' }">← 作品交流</RouterLink>
     <header class="page-heading">
-      <p class="eyebrow">04 / COMMUNITY</p><h1>{{ post?.title || '作品交流' }}</h1>
+      <h1>{{ post?.title || '作品交流' }}</h1>
       <p>{{ post ? post.type + ' · ' + post.author : '分享你的盘扣练习，或带着具体的制作问题来交流。' }}</p>
     </header>
     <template v-if="route.params.id">
