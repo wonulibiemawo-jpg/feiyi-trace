@@ -1,63 +1,21 @@
-<template>
-  <div id="app-layout">
-    <!-- 顶部导航栏 -->
-    <NavBar />
-
-    <!-- 主内容区域：根据当前路由显示不同页面 -->
-    <main class="main-content">
-      <router-view v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
-          <component :is="Component" />
-        </Transition>
-      </router-view>
-    </main>
-
-    <!-- AI 问答面板（浮动在右下角） -->
-    <AiChatPanel />
-    <!-- 非遗知识问答面板 -->
-    <QuizPanel />
-  </div>
-</template>
-
 <script setup>
-// App.vue 是根组件，负责整体布局
-// 三块结构：顶部导航 + 中间内容（路由切换） + 右下AI问答
 import NavBar from './components/NavBar.vue'
-import AiChatPanel from './components/AiChatPanel.vue'
-import QuizPanel from './components/QuizPanel.vue'
+import { notice } from './data/demoStore'
 </script>
 
-<style scoped>
-#app-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--color-bg);
-}
-
-.main-content {
-  flex: 1;                     /* 撑满剩余空间 */
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* --- 页面切换过渡动画 --- */
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* 进入前：透明 + 下移 20px */
-.page-enter-from {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* 离开后：透明 + 上移 20px */
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-</style>
+<template>
+  <NavBar />
+  <main id="main-content" class="site-main">
+    <RouterView />
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div><strong>上海盘扣文化</strong><p>上海中侨职业技术大学 · 数字媒体技术毕业设计</p></div>
+      <div class="footer-links">
+        <RouterLink :to="{ name: 'home', hash: '#sources' }">资料出处</RouterLink>
+        <RouterLink :to="{ name: 'admin' }">管理演示</RouterLink>
+      </div>
+    </div>
+  </footer>
+  <div v-if="notice" class="toast" role="status">{{ notice }}</div>
+</template>
